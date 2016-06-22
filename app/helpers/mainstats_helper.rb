@@ -1,0 +1,2 @@
+module MainstatsHelper
+end
