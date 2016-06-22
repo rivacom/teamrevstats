@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'pg'
+gem 'mysql2'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'bootstrap-sass'
 gem 'query_report'
