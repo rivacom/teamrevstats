@@ -11,33 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616183955) do
+ActiveRecord::Schema.define(version: 20160629035107) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "dailydifs", force: :cascade do |t|
+    t.integer  "player_id",     limit: 4
+    t.integer  "tgamesplayed",  limit: 4
+    t.integer  "twins",         limit: 4
+    t.integer  "tloss",         limit: 4
+    t.integer  "tdamage",       limit: 4
+    t.integer  "thealing",      limit: 4
+    t.decimal  "winpercent",              precision: 16, scale: 2
+    t.decimal  "tfinalblows",             precision: 16, scale: 2
+    t.decimal  "tdeaths",                 precision: 16, scale: 2
+    t.decimal  "tmedals",                 precision: 16, scale: 2
+    t.decimal  "teliminations",           precision: 16, scale: 2
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
 
   create_table "dailystats", force: :cascade do |t|
-    t.integer  "player_id"
-    t.integer  "gamesplayed"
-    t.integer  "win"
-    t.integer  "loss"
-    t.decimal  "winpercent",   precision: 16, scale: 2
-    t.decimal  "finalblows",   precision: 16, scale: 2
-    t.decimal  "deaths",       precision: 16, scale: 2
-    t.decimal  "medals",       precision: 16, scale: 2
-    t.decimal  "eliminations", precision: 16, scale: 2
-    t.integer  "damage"
-    t.integer  "healing"
+    t.integer  "player_id",    limit: 4
+    t.integer  "gamesplayed",  limit: 4
+    t.integer  "win",          limit: 4
+    t.integer  "loss",         limit: 4
+    t.decimal  "winpercent",             precision: 16, scale: 2
+    t.decimal  "finalblows",             precision: 16, scale: 2
+    t.decimal  "deaths",                 precision: 16, scale: 2
+    t.decimal  "medals",                 precision: 16, scale: 2
+    t.decimal  "eliminations",           precision: 16, scale: 2
+    t.integer  "damage",       limit: 4
+    t.integer  "healing",      limit: 4
     t.date     "statdate"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   create_table "players", force: :cascade do |t|
-    t.string   "battlenet"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "avatar"
+    t.string   "battlenet",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "avatar",     limit: 255
   end
 
 end

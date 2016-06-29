@@ -8,9 +8,9 @@ namespace :updateavatar do
     
     Player.all.each do |f|
     
-    battlenet = f.battlenet.gsub! '#', '-'
+
     puts f.battlenet
-    url = "#{ base_uri }#{ battlenet }"
+    url = "#{ base_uri }#{ f.battlenet }"
     doc = Nokogiri::HTML(open(url))
     
     avatarupdate = doc.at_css('div.header-avatar img').attr('src')

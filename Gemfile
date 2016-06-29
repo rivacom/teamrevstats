@@ -4,6 +4,7 @@ gem 'mysql2'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'bootstrap-sass'
 gem 'query_report'
+gem 'whenever'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

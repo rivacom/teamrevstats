@@ -4,21 +4,22 @@ class MainstatsController < ApplicationController
     include QueryReport::Helper
     
     def index
-    @gamesplayed = Player.joins(:dailystats).select('players.*, dailystats.gamesplayed AS average_score').order('average_score desc').first.battlenet
-    @avatar = Player.where("battlenet = ?", 'Riva-11618').pluck(:avatar)
-    @topwins = Player.joins(:dailystats).select('players.*, dailystats.win AS win').order('win desc').first.battlenet
-    @toploss = Player.joins(:dailystats).select('players.*, dailystats.loss AS loss').order('loss desc').first.battlenet
-    @topfinalblow = Player.joins(:dailystats).select('players.*, dailystats.finalblows AS blows').order('blows desc').first.battlenet
-    @topavgdeath = Player.joins(:dailystats).select('players.*, dailystats.deaths AS deaths').order('deaths desc').first.battlenet
-    @topavgmedal = Player.joins(:dailystats).select('players.*, dailystats.medals AS medals').order('medals desc').first.battlenet
-    @topavgelim = Player.joins(:dailystats).select('players.*, dailystats.eliminations AS elim').order('elim desc').first.battlenet
-    @topavgdamage = Player.joins(:dailystats).select('players.*, dailystats.damage AS dam').order('dam desc').first.battlenet
-    @topavghealing = Player.joins(:dailystats).select('players.*, dailystats.healing AS heal').order('heal desc').first.battlenet
-    @player = Player.all
+        
+        
+   @gamesplayed = Player.joins(:dailydif).select('players.*, dailydifs.tgamesplayed AS average_score').order('average_score desc').first
+   @topwins = Player.joins(:dailydif).select('players.*, dailydifs.winpercent AS win').order('win desc').first
+   @toploss = Player.joins(:dailydif).select('players.*, dailydifs.tloss AS loss').order('loss desc').first
+   @topfinalblow = Player.joins(:dailydif).select('players.*, dailydifs.tfinalblows AS blows').order('blows desc').first
+   @topavgdeath = Player.joins(:dailydif).select('players.*, dailydifs.tdeaths AS deaths').order('deaths desc').first
+   @topavgmedal = Player.joins(:dailydif).select('players.*, dailydifs.tmedals AS medals').order('medals desc').first
+   @topavgelim = Player.joins(:dailydif).select('players.*, dailydifs.teliminations AS elim').order('elim desc').first
+   @topavgdamage = Player.joins(:dailydif).select('players.*, dailydifs.tdamage AS dam').order('dam desc').first
+   @topavghealing = Player.joins(:dailydif).select('players.*, dailydifs.thealing AS heal').order('heal desc').first
+   # @player = Player.all
     end
     
     def currenttop
-      @player = Player.joins(:dailystats).select('players.*, dailystats.gamesplayed as gamesplayed, dailystats.win as win, dailystats.loss as loss, dailystats.finalblows as finalblows, dailystats.deaths as deaths, dailystats.medals as medals, dailystats.eliminations as eliminations, dailystats.damage as damage, dailystats.healing as healing, dailystats.statdate as statdate' ).order('dailystats.id asc'). group('players.id').where('statdate = ?', Date.yesterday)
+      @player = Player.joins(:dailydif).select('players.*, dailydifs.tgamesplayed as gamesplayed, dailydifs.twins as win, dailydifs.tloss as loss, dailydifs.tfinalblows as finalblows, dailydifs.tdeaths as deaths, dailydifs.tmedals as medals, dailydifs.teliminations as eliminations, dailydifs.tdamage as damage, dailydifs.thealing as healing' ).order('dailydifs.id asc'). group('players.id')
        # @stats = Dailystat.joins(:player).select([:id, :gamesplayed]).order('id desc').limit(7)
        
        reporter(@player) do
@@ -32,7 +33,6 @@ class MainstatsController < ApplicationController
         column :eliminations
         column :damage
         column :healing
-        column :statdate
       end
       
        
