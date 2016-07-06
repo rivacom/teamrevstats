@@ -34,8 +34,25 @@ class MainstatsController < ApplicationController
         column :damage
         column :healing
       end
-      
+    end
+    
+    def currenttopcomp
+       @player = Player.joins(:dailydif).select('players.*, dailydifs.tcompgp as gamesplayed, dailydifs.tcompwin as win, dailydifs.tcomploss as loss, dailydifs.tcompfb as finalblows, dailydifs.tcompdeath as deaths, dailydifs.tcompmedals as medals, dailydifs.tcompelim as eliminations, dailydifs.tcompdam as damage, dailydifs.tcompheal as healing' ).order('dailydifs.id asc'). group('players.id')
+       # @stats = Dailystat.joins(:player).select([:id, :gamesplayed]).order('id desc').limit(7)
        
+       reporter(@player) do
+        column :battlenet
+        column :gamesplayed
+        column :win
+        column :loss
+        column :finalblows
+        column :deaths
+        column :medals
+        column :eliminations
+        column :damage
+        column :healing
+      end
+        
     end
     
     
