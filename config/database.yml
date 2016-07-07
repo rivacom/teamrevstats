@@ -27,5 +27,5 @@ production:
   adapter: mysql2
   encoding: utf8
   database: rev
-  username: adminBFwHUBY
-  host: EQbpeTpANakt
+  username: adminjSVxP4G
+  host: $OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT
