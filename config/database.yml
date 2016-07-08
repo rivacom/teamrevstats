@@ -27,5 +27,6 @@ production:
   adapter: mysql2
   encoding: utf8
   database: rev
-  username: adminjSVxP4G
-  host: $OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT
+  username: u1kglg783ur8hkbj
+  host: nj5rh9gto1v5n05t.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
+  password: qsgmd9zx8ycjgvst 
