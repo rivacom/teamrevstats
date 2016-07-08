@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.4'
 
 gem 'mysql2'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
