@@ -26,7 +26,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: rev
+  database: d55uc07lqlcey9b5
   username: u1kglg783ur8hkbj
   host: nj5rh9gto1v5n05t.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
   password: qsgmd9zx8ycjgvst 
