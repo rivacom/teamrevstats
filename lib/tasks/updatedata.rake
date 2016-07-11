@@ -26,10 +26,10 @@ namespace :updatedata do
       compwon = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[7]/div/table/tbody/tr/td[text()="Games Won"]/following-sibling::td').first.text.to_s.delete(',').to_i
       comploss = compgp - compwon
       compwinper = compwon.to_f / compgp.to_f * 100
-      compfb = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[1]/div/table/tbody/tr/td[text()="Final Blows"]/following-sibling::td').first.text.to_s.delete(',').to_i
-      compdeath = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[5]/div/table/tbody/tr/td[text()="Deaths"]/following-sibling::td').first.text.to_s.delete(',').to_i
-      compmedal = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[6]/div/table/tbody/tr/td[text()="Medals"]/following-sibling::td').first.text.to_s.delete(',').to_i
-      compelim = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[1]/div/table/tbody/tr/td[text()="Eliminations"]/following-sibling::td').first.text.to_s.to_s.delete(',').to_i
+      compfb = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[1]/div/table/tbody/tr/td[text()="Final Blows"]/following-sibling::td').first.text.to_s.delete(',').to_f
+      compdeath = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[5]/div/table/tbody/tr/td[text()="Deaths"]/following-sibling::td').first.text.to_s.delete(',').to_f
+      compmedal = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[6]/div/table/tbody/tr/td[text()="Medals"]/following-sibling::td').first.text.to_s.delete(',').to_f
+      compelim = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[1]/div/table/tbody/tr/td[text()="Eliminations"]/following-sibling::td').first.text.to_s.to_s.delete(',').to_f
       compdam = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[1]/div/table/tbody/tr/td[text()="Damage Done"]/following-sibling::td').first.text.to_s.to_s.delete(',').to_i
       compheal = doc.xpath('//body/div/div/div[3]/section/div/div/div/div[2]/div/table/tbody/tr/td[text()="Healing Done"]/following-sibling::td').first.text.to_s.to_s.delete(',').to_i
     else
