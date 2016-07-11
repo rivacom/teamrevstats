@@ -19,7 +19,7 @@ class MainstatsController < ApplicationController
     end
     
     def currenttop
-      @player = Player.joins(:dailydif).select('players.*, dailydifs.tgamesplayed as gamesplayed, dailydifs.twins as win, dailydifs.tloss as loss, dailydifs.tfinalblows as finalblows, dailydifs.tdeaths as deaths, dailydifs.tmedals as medals, dailydifs.teliminations as eliminations, dailydifs.tdamage as damage, dailydifs.thealing as healing' ).order('dailydifs.id asc'). group('players.id')
+      @player = Player.joins(:dailydif).select('players.*, dailydifs.tgamesplayed as gamesplayed, dailydifs.twins as win, dailydifs.tloss as loss, dailydifs.tfinalblows as finalblows, dailydifs.tdeaths as deaths, dailydifs.tmedals as medals, dailydifs.teliminations as eliminations, dailydifs.tdamage as damage, dailydifs.thealing as healing, dailydifs.winpercent as winper' ).order('dailydifs.id asc'). group('players.id')
        # @stats = Dailystat.joins(:player).select([:id, :gamesplayed]).order('id desc').limit(7)
        
        reporter(@player) do
@@ -27,6 +27,7 @@ class MainstatsController < ApplicationController
         column :gamesplayed
         column :win
         column :loss
+        column :winper
         column :finalblows
         column :deaths
         column :medals
