@@ -13,7 +13,7 @@ namespace :updatedata do
     gamesplayed = doc.xpath('//div/div/section/div/div/div/div[7]/div/table/tbody/tr[2]/td[2]').first.text.to_s.delete(',').to_i
     gameswon = doc.xpath('//div/div/section/div/div/div/div[7]/div/table/tbody/tr[1]/td[2]').first.text.to_s.delete(',').to_i
     gamesloss = gamesplayed - gameswon
-   # winper = gameswon.to_f / gamesplayed.to_f * 100
+    winper = gameswon.to_f / gamesplayed.to_f * 100
     finalblow = doc.xpath('//div/div/section/div/div/div/div[1]/div/table/tbody/tr[4]/td[2]').first.text.to_s.to_s.delete(',').to_f
     death = doc.xpath('//div/div/section/div/div/div/div[5]/div/table/tbody/tr[1]/td[2]').first.text.to_s.to_s.delete(',').to_f
     medals = doc.xpath('//div/div/section/div/div/div/div[6]/div/table/tbody/tr[2]/td[2]').first.text.to_s.delete(',').to_f
